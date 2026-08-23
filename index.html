@@ -30,15 +30,40 @@
       max-width: 350px;
     }
 
-    .product img {
+    /* Container to handle image swap */
+    .image-container {
+      position: relative;
       width: 100%;
-      height: auto;
-      display: block;
+      aspect-ratio: 1 / 1; /* Keeps layout stable during image swap */
+      overflow: hidden;
       border-radius: 4px;
-      transition: transform 0.2s ease;
     }
 
-    .product img:hover {
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+    }
+
+    /* Hover effect for Mickey & Minnie front/back swap */
+    .image-container .back-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .image-container:hover .front-img-swap {
+      opacity: 0;
+    }
+
+    .image-container:hover .back-img {
+      opacity: 1;
+    }
+
+    .image-container:hover img {
       transform: scale(1.02);
     }
 
@@ -70,36 +95,43 @@
 <body>
 
   <div id="shop">
-    <!-- Slot 1: MICKEYNMINNIE -->
+    <!-- Slot 1: MICKEYNMINNIE (Front/Back Hover) -->
     <div class="product">
       <a href="mickey-n-minnie.html">
-        <img src="/products/mickey-n-minnie.jpg" alt="MICKEYNMINNIE">
+        <div class="image-container">
+          <img class="front-img-swap" src="/products/mickey-n-minnie-front.jpg" alt="MICKEYNMINNIE Front">
+          <img class="back-img" src="/products/mickey-n-minnie-back.jpg" alt="MICKEYNMINNIE Back">
+        </div>
       </a>
       <h2>MICKEYNMINNIE</h2>
       <a href="mickey-n-minnie.html">
-        <button>View Product</button>
+        <button>Buy Now - $10</button>
       </a>
     </div>
 
     <!-- Slot 2: HARLEMWORLD -->
     <div class="product">
       <a href="harlem-world.html">
-        <img src="/products/harlem-world.jpg" alt="HARLEMWORLD">
+        <div class="image-container">
+          <img src="/products/harlem-world.png" alt="HARLEMWORLD">
+        </div>
       </a>
       <h2>HARLEMWORLD</h2>
       <a href="harlem-world.html">
-        <button>View Product</button>
+        <button>Buy Now - $10</button>
       </a>
     </div>
 
     <!-- Slot 3: CHACHAT -->
     <div class="product">
       <a href="cha-chat.html">
-        <img src="/products/cha-cha-trucker.jpg" alt="CHACHAT">
+        <div class="image-container">
+          <img src="/products/cha-chat.png" alt="CHACHAT">
+        </div>
       </a>
       <h2>CHACHAT</h2>
-      <a href="cha-chat.html">
-        <button>View Product</button>
+      <a href="https://buy.stripe.com/9AQ01n7hP7wZgmsfYY" target="_blank">
+        <button>Buy Now - $10</button>
       </a>
     </div>
   </div>

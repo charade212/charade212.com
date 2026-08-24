@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>charade212</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
   <style>
     body, html {
       margin: 0;
@@ -16,27 +23,29 @@
 
     #shop {
       max-width: 1200px;
-      margin: 60px auto;
+      margin: 40px auto;
       padding: 20px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 40px;
+      gap: 30px;
     }
 
     .product {
       text-align: center;
-      flex: 1 1 300px;
-      max-width: 350px;
+      flex: 1 1 320px;
+      max-width: 360px;
+      width: 100%;
     }
 
-    /* Container for image sizing & hover swap */
+    /* Container configured for 1920x1080 (16:9 ratio) */
     .image-container {
       position: relative;
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 16 / 9;
       overflow: hidden;
       border-radius: 4px;
+      background-color: #f5f5f5;
     }
 
     .image-container img {
@@ -47,7 +56,7 @@
       transition: opacity 0.3s ease, transform 0.2s ease;
     }
 
-    /* Mickey & Minnie front/back hover effect */
+    /* Front/Back Hover Effect for Mickey & Minnie */
     .image-container .back-img {
       position: absolute;
       top: 0;
@@ -64,7 +73,7 @@
     }
 
     .image-container:hover img {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
 
     .product h2 {
@@ -77,21 +86,44 @@
       background: black;
       color: white;
       border: none;
-      padding: 12px 30px;
+      padding: 14px 30px;
       font-family: Arial, sans-serif;
       font-size: 14px;
+      font-weight: bold;
       cursor: pointer;
       transition: background 0.3s ease;
       margin-top: 10px;
       width: 100%;
+      border-radius: 2px;
     }
 
     button:hover {
-      background: #555;
+      background: #333;
     }
 
     a {
       text-decoration: none;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 600px) {
+      #shop {
+        margin: 20px auto;
+        padding: 15px;
+        gap: 35px;
+      }
+
+      .product {
+        max-width: 100%;
+      }
+
+      /* Disables hover requirement on mobile touchscreens */
+      .image-container:active .front-img-swap {
+        opacity: 0;
+      }
+      .image-container:active .back-img {
+        opacity: 1;
+      }
     }
   </style>
 </head>
